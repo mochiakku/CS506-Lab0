@@ -5,10 +5,12 @@ import numpy as np
 def dot_product(v1, v2):
     '''
     v1 and v2 are vectors of same shape.
-    return the scalar dor product of the two vectors.
+    return the scalar dot product of the two vectors.
     # Hint: use `np.dot`.
     '''
     ### YOUR CODE HERE
+    return np.dot(v1,v2)
+
     
 def cosine_similarity(v1, v2):
     '''
@@ -27,6 +29,7 @@ def cosine_similarity(v1, v2):
     # Hint: Use `dot_product` and `np.linalg.norm`.
     '''
     ### YOUR CODE HERE
+    return dot_product(v1,v2)/(np.linalg.norm(v1)*np.linalg.norm(v2))
     
 def nearest_neighbor(target_vector, vectors):
     '''
@@ -39,3 +42,15 @@ def nearest_neighbor(target_vector, vectors):
     # Hint: For this lab, you can just use a for loop to iterate through vectors.
     '''
     ### YOUR CODE HERE
+    max_similarity = -1
+    closest_index = -1
+    
+    for i in range(vectors.shape[0]):
+        current_vector = vectors[i]
+        similarity = cosine_similarity(target_vector, current_vector)
+        
+        if similarity > max_similarity:
+            max_similarity = similarity
+            closest_index = i
+    
+    return closest_index

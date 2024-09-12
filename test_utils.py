@@ -34,6 +34,3 @@ def test_nearest_neighbor():
     
     assert result == expected_index, f"Expected index {expected_index}, but got {result}"
 
-test_cosine_similarity()
-test_dot_product()
-test_nearest_neighbor()
